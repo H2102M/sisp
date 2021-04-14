@@ -1,0 +1,177 @@
+body {
+  padding: 15px;
+  background-color: var(--c1);
+  color: #ffffff;
+  --c1: #252525;
+  --c2: #1989d4;
+  --c3: #3a3a3a;
+  --c4: #4e4e4e;
+}
+
+#headerContainer {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#headerContainer > p {
+  font-size: 30;
+  display: inline;
+  float: right;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /*transform: translateY(-50%);*/
+}
+
+#headerContainer > #addButton {
+  display: inline-block;
+  background-color: var(--c2);
+  border-radius: 50%;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  text-align: center;
+  line-height: 100%;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+#headerContainer > img {
+  width: 5%;
+}
+
+.imgCont {
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 1.3px;
+  border-color: var(--c2);
+  width: 250px;
+  margin-right: 0%;
+  display: inline-block;
+  margin-bottom: 10px;
+  background-color: var(--c3);
+}
+
+.imgCont > span {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.imgCont > span > p {
+  display: inline;
+  margin: 0px;
+  margin-right: 3px;
+}
+
+.imgCont > span >p:first-child {
+  margin: 0px;
+  margin-bottom: 0px;
+  margin-left: 3px;
+}
+
+.conoc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.srco {
+  visibility: hidden;
+  position: absolute;
+  z-index: 3;
+  font-size: 50px;
+  color: transparent;
+  text-shadow: 0 0 0 grey;
+  transition: text-shadow 1s;
+}
+
+.likestxt {
+  text-align: end;
+  margin: 0px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+  color: var(--c2);
+  text-shadow: 2px 2px 2px #000000;
+}
+
+.likesContainer {
+  margin: 10;
+  padding: 0;
+}
+
+.img {
+  width: 100%;
+  border-radius: 20px;
+  filter: brightness(1);
+  visibility: visible;
+  transition: filter 0.5s ease-in-out;
+}
+
+.imgText {
+  color: aliceblue;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /*text-shadow: 2px 2px 2px #000000;*/
+  margin: 0px;
+}
+
+.img:hover {
+  filter: brightness(0.4);
+}
+
+.img:hover + .srco {
+  visibility: visible;
+}
+
+.srco:hover {
+  visibility: visible;
+}
+
+.userContainer {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.userContainer > p {
+  display: inline-block;
+  color: var(--c2);
+  margin: 0;
+  transform: translateY(-50%);
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+.userContainer > img { 
+  width: 10%;
+  border-radius: 50%;
+  border: 2px var(--c2) solid;
+}
+
+g {
+  font-family: sans-serif;
+}
+
+@media (max-width: 526px) {
+  .imgCont {
+      width: 100%;
+  }
+  #headerContainer > p {
+      font-size: 16;
+      margin-bottom: 0%;
+      margin-top: 0%;
+      transform: translateY(0%);
+  }
+  #headerContainer > img {
+      width: 10%;
+      
+  }
+}
+
+@media (min-width: 526px) and (max-width: 769px) {
+  .imgCont {
+      width: 50%;
+  }
+}

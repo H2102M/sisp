@@ -1,0 +1,98 @@
+.mainsignin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.97);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerSignIn {
+    position: relative;
+    padding: 22px;
+    background-color: var(--c1);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputcontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.oneInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.oneInput > input {
+    font-size: medium;
+    background-color: var(--c3);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    border: 1.5px var(--c2) solid;
+}
+
+.oneInput > input:focus {
+    outline: none;
+    background-color: var(--c4);
+}
+
+.oneInput > label{
+    font-size: medium;
+    background-color: unset;
+    color: white;
+    padding: 0px;
+}
+
+.row {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.row > button {
+    margin: 0px 5px;
+    border: 1.5px var(--c2) solid;
+}
+
+h1 {
+    margin: 0px;
+}
+
+button {
+    margin-top: 10px;
+    display: block;
+    font-size: x-large;
+    border: none;
+    background-color: var(--c3);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+#imgupload {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+#file {
+    display: none;
+}
+
+#file~label {
+    font-size: large;
+    background-color: var(--c3);
+    padding: 5px 20px;
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1.5px var(--c2) solid;
+}

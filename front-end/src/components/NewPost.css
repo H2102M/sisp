@@ -1,0 +1,111 @@
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerNewPost {
+    position: relative;
+    padding: 22px;
+    background-color: var(--c1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    animation: start 1s;
+}
+
+.innerNewPost > * {
+    animation: fade 1s;
+}
+
+@keyframes start {
+    from {width: 0px;height: 0px;}
+    to {width: 201px;height: 194px;}
+}
+
+@keyframes fade {
+    0% {position: fixed;left: 0%;opacity: 0;height: 200px;}
+    75% {position: fixed;left: 20vw;opacity: 0;height: 200px;}
+    100% {left:23vw;position: fixed;opacity: 1;height: 200px;}
+}
+
+.innerNewPost > div:not(.oneInput) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+h1 {
+    margin: 0px;
+}
+
+b {
+    font-size: 25px;
+    background-color: var(--c3);
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+#input {
+    display: none;
+}
+
+form > label {
+    font-size: x-large;
+    background-color: var(--c3);
+    padding: 5px 20px;
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form > button {
+    margin-top: 10px;
+    display: block;
+    font-size: x-large;
+    border: none;
+    background-color: var(--c3);
+    color: aliceblue;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form > .oneInput {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6px;
+}
+
+form > .oneInput > input {
+    font-size: medium;
+    background-color: var(--c3);
+    outline: none;
+    color: white;
+    border: 1px var(--c2) solid;
+    border-radius: 5px;
+}
+
+form > .oneInput > input:focus {
+    background-color: var(--c4);
+}
+
+form > .oneInput > label{
+    font-size: medium;
+    background-color: unset;
+    color: white;
+    padding: 0px;
+}
