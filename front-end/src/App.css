@@ -144,7 +144,12 @@ body {
   font-weight: 400;
 }
 
-.userContainer > img { 
+/* .userContainer > picture {
+  width: 10%;
+  
+} */
+
+.userContainer > img {
   width: 10%;
   border-radius: 50%;
   border: 2px var(--c2) solid;
