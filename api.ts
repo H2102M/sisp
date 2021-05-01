@@ -13,6 +13,8 @@ import * as http2 from 'http2'
 
 // require('express-http2-workaround')({ express:express, http2:http2, app:app });
 
+const fport = 3001
+
 var storage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, 'uploads/')
@@ -45,7 +47,7 @@ var userstorage = multer.diskStorage({
 
 var userupload = multer({ storage: userstorage });
 
-app.use(cors(/*{ origin: 'http://192.168.0.14:3001' }*/ { origin: 'http://192.168.0.14:5000' }));
+app.use(cors({ origin: `http://192.168.0.14:${fport}` }));
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
@@ -181,11 +183,11 @@ router.post('/upload', upload.single('file'), async (req, res, next) => {
 				req.body.posttext,
 				getDate()
 			])
-			res.redirect('http://192.168.0.14:5000')
+			res.redirect(`http://192.168.0.14:${fport}`)
 		}
 	}).catch(err => {
 		res.send('Auth failed')
-		res.redirect('http://192.168.0.14:3001')
+		res.redirect(`http://192.168.0.14:${fport}`)
 	})
 })
 
