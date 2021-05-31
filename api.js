@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 const multer = require("multer");
 const fs = require("fs");
-const webp = require("webp-converter");
 const sharp = require("sharp");
 // require('express-http2-workaround')({ express:express, http2:http2, app:app });
 const fport = 3001;
@@ -75,10 +74,7 @@ router.post('/register', userupload.single('file'), async (req, res, next) => {
                         throw err;
                     }
                     else {
-                        const result = webp.cwebp(`uploads\\UserImages\\${username}.${ext(req.file.mimetype)}`, `uploads\\UserImages\\${username}.webp`, "-q 80");
-                        result.then((response) => {
-                            console.log(response);
-                        });
+                        userimgproc(`uploads\\UserImages\\${username}.${ext(req.file.mimetype)}`, `uploads/UserImages/${username}.webp`, req.file);
                         con.query("INSERT INTO users(id, username, password) VALUES (?, ?, ?)", [uuidv4(), username, password]);
                         res.send("Succesful!");
                     }
@@ -228,8 +224,22 @@ const ext = (mimetype) => {
         return 'jpg';
     }
 };
+const userimgproc = (path, name, img) => {
+    console.log(path, name);
+    let image = sharp(path, { failOnError: false });
+    image
+        .rotate()
+        .resize({
+        width: 120,
+        height: 120,
+        kernel: sharp.kernel.nearest,
+        fit: sharp.fit.cover
+    })
+        .webp()
+        .toFile(name);
+};
 const imgproc = (path, name, img) => {
-    let image = sharp(path);
+    let image = sharp(path, { failOnError: false });
     image
         .rotate()
         .webp()

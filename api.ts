@@ -86,10 +86,7 @@ router.post('/register', userupload.single('file'), async (req, res, next) => {
 						throw err
 					}
 					else {
-						const result = webp.cwebp(`uploads\\UserImages\\${username}.${ext(req.file.mimetype)}`, `uploads\\UserImages\\${username}.webp`, "-q 80");
-						result.then((response) => {
-							console.log(response);
-						});
+						userimgproc(`uploads\\UserImages\\${username}.${ext(req.file.mimetype)}`, `uploads/UserImages/${username}.webp`, req.file)
 						con.query("INSERT INTO users(id, username, password) VALUES (?, ?, ?)", [uuidv4(), username, password]);
 						res.send("Succesful!");
 					}
@@ -250,8 +247,23 @@ const ext = (mimetype) => {
 	else if (mimetype === 'image/jpeg') { return 'jpg' }
 }
 
+const userimgproc = (path: string, name: string, img) => {
+	console.log(path, name)
+	let image = sharp(path, { failOnError: false })
+	image
+		.rotate()
+		.resize({
+			width: 120,
+			height: 120,
+			kernel: sharp.kernel.nearest,
+			fit: sharp.fit.cover
+		})
+		.webp()
+		.toFile(name)
+}
+
 const imgproc = (path: string, name: string, img) => {
-	let image = sharp(path)
+	let image = sharp(path, { failOnError: false })
 	image
 		.rotate()
 		.webp()
@@ -260,6 +272,6 @@ const imgproc = (path: string, name: string, img) => {
 
 const getDate = () => {
 	let date = new Date()
-	let fin = `${date.getDate().toString().padStart(2,'0')}.${(date.getMonth()+1).toString().padStart(2,'0')}.${date.getFullYear()} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`
+	let fin = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`
 	return fin
 }
